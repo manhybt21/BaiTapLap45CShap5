@@ -22,9 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.EmailStudent)
             </th>
-            @*<th>
+            <th>
                 @Html.DisplayNameFor(model => model.IdClass)
-            </th>*@
+            </th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -40,12 +40,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EmailStudent)
             </td>
-            @*<td>
-                @Html.DisplayFor(model=>item.IdClass)
-            </td>*@
             <td>
-                <a asp-action="Update" asp-route-id="@item.IdStudent">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdStudent">Delete</a>
+                @Html.DisplayFor(model => item.Class.ClassName)
+            </td>
+            <td>
+                <form asp-action="Update" asp-route-id="@item.IdStudent" method="get">
+                    <input type="submit" class="btn btn-success" value="Update" />
+                </form>
+                <form asp-action="Delete" asp-route-id="@item.IdStudent" method="get">
+                    <input type="submit" class="btn btn-danger" value="Delete" />
+                </form>
+
             </td>
         </tr>
 }

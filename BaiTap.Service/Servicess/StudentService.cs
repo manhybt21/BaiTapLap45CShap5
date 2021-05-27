@@ -48,8 +48,18 @@ namespace BaiTap.Service.Servicess
             _databaseContext.SaveChanges();
             return 1;
         }
+
         public List<Student> GetListStudent() {
-            var getStudent = _databaseContext.Students.ToList();
+            var getStudent = _databaseContext.Students.Select(x => new Student()
+            {
+                Class = x.Class,
+                EmailStudent = x.EmailStudent,
+                IdClass = x.IdClass,
+                IdStudent = x.IdStudent,
+                Mark = x.Mark,
+                NameStudent = x.NameStudent
+            }
+            ).ToList();
             return getStudent;
         }
     }

@@ -50,17 +50,12 @@ namespace BaiTap.Controllers
             _studentService.UpdateStudent(st);
            return RedirectToAction("Index", "Student");
         }
+        [HttpGet("student/delete/{id}")]
+        [HttpPost("student/delete/{id}")]
         public IActionResult Delete(int id)
         {
-            var delete =  _databaseContext.Students
-                .FirstOrDefault(m => m.IdStudent == id);
-            return View(delete);
-        }
-        [HttpPost]
-        public IActionResult Delete(Student student)
-        {
-            _studentService.DeleteStudent(student.IdStudent);
-           return RedirectToAction("Index", "Student");
+            _studentService.DeleteStudent(id);
+            return RedirectToAction("Index", "Student");
         }
     }
 }
