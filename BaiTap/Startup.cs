@@ -29,8 +29,10 @@ namespace BaiTap
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IClassService, ClassService>();
             services.AddDbContext<databaseContext>(x => x.UseSqlServer(Configuration.GetConnectionString("manhDbLab45")));
-            services.AddMvc();
+            services.AddDbContext<databaseContext>();
+            //services.AddMvc();
             services.AddControllersWithViews();
         }
 
